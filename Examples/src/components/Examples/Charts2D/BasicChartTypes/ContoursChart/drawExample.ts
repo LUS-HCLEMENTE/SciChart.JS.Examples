@@ -34,8 +34,9 @@ export const drawExample = async () => {
 
     // Create a Heatmap Data-series. Pass heatValues as a number[][] to the UniformHeatmapDataSeries
     const initialZValues = generateExampleData(3, heatmapWidth, heatmapHeight, colorPaletteMax);
+
     const heatmapDataSeries = new UniformHeatmapDataSeries(wasmContext, {
-        zValues: initialZValues,
+        zValues: initialZValues.map(i => i.map(j => j * -1)), // CHANGING THE VALUE TO NEGATIVE
         xStart: 0,
         xStep: 1,
         yStart: 0,
